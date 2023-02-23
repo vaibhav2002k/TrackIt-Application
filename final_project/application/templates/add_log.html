@@ -1,0 +1,48 @@
+{% extends "base.html"%}
+
+{% block content %}
+  <div class="container">
+     <form method="POST" class="form-register form-pad" novalidate>
+      {{ form.hidden_tag() }}
+
+      {% if form.timestamp.errors %}
+        {{ form.timestamp(class='form-control is-invalid my-form mt-4', placeholder="Time")}}
+        <div class="invalid-feedback">
+          {% for error in form.timestamp.errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+
+      {% else %}
+        {{ form.timestamp(class='form-control my-form mt-4', placeholder="Time")}}
+      {% endif %}
+
+      {% if form.value.errors %}
+        {{ form.value(class='form-control is-invalid my-form', placeholder="value")}}
+        <div class="invalid-feedback">
+          {% for error in form.value.errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+
+      {% else %}
+        {% if tracker.tracker_type == 'bool' %}    
+          <div class="form-control my-form">   
+          {{ form.value(class='my-form', placeholder="value")}} 
+          {{ form.value.label(class="ml-2 my-color") }} 
+          <span class="ml-2 my-color">Task Completed</span>
+          </div> 
+        {% else %}
+          {{ form.value(class='form-control my-form', placeholder="value")}}
+        {% endif %}
+      {% endif %}
+
+      {{ form.note(class='form-control my-form', placeholder="Add Note")}}
+
+			<br><br>
+      {{form.submit(class='btn btn-lg btn-block btn-primary my-button')}}
+		<br>
+
+        </form>
+
+{% endblock %}

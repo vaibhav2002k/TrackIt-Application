@@ -1,0 +1,83 @@
+body{
+        background-color: #1e2127;
+        color: white;
+      }
+
+.logo{
+  margin-top: 4%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 12%;
+}
+
+.form-pad{
+padding: 0px 25% 0px 25%;
+}
+
+.my-button{
+  background: linear-gradient(90deg, #FF8E7F 5.43%, #B45E53 100%);
+  border: 4px solid #1E2127;
+  box-sizing: border-box;
+  box-shadow: -12px -12px 24px #2B2F38, 12px 12px 24px #0D0F12;
+  border-radius: 40px;
+  padding: 8px 40px;
+  color: white;
+}
+
+.my-color{
+  color: #F28678;
+
+}
+
+.card{
+  background: linear-gradient(90.09deg, #181B20 10.49%, #1E2127 87.19%);
+  border: 2px solid rgba(0, 0, 0, 0.14);
+  box-sizing: border-box;
+  box-shadow: 50px 50px 100px rgba(0, 0, 0, 0.9);
+  border-radius: 40px;
+  color: white;
+}
+
+.my-button-danger{
+  background: linear-gradient(90.45deg, #EE0A0A 4.4%, #910000 99.34%);
+  padding: 6px 30px;
+  border: 4px solid #1E2127;
+  box-sizing: border-box;
+  box-shadow: -8px -8px 16px rgba(57, 63, 74, 0.82), 8px 8px 16px #000000;
+  border-radius: 40px;
+  color: white;
+}
+
+.my-button-success{
+  background: linear-gradient(271.23deg, #0F41A2 1.3%, #1276AE 92.86%);
+  padding: 6px 30px;
+  border: 4px solid #1E2127;
+  box-sizing: border-box;
+  box-shadow: -8px -8px 16px rgba(57, 63, 74, 0.82), 8px 8px 16px #000000;
+  border-radius: 40px;
+  color: white;
+}
+
+.my-form{
+  background-color:#0e2127 !important; 
+  color: #ffffff; 
+  margin-bottom:20px;
+}
+
+.sec-button{
+  background: linear-gradient(90.87deg, #B113E9 9.8%, #740963 95.06%);
+  border: 4px solid #1E2127;
+  box-sizing: border-box;
+  box-shadow: -8px -8px 16px rgba(57, 63, 74, 0.82), 8px 8px 16px #000000;
+  border-radius: 40px;
+}
+
+.sec2-button{
+  background-color: black;
+  border: 4px solid #1E2127;
+  box-sizing: border-box;
+  box-shadow: -8px -8px 16px rgba(57, 63, 74, 0.82), 8px 8px 16px #000000;
+  border-radius: 40px;
+  color: white;
+}

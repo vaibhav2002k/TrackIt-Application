@@ -1,0 +1,54 @@
+{% extends "base.html"%}
+
+{% block content %}
+  <div class="container">
+     <form method="POST" class="form-register form-pad">
+      {{ form.hidden_tag() }}
+
+      {% if form.name.errors %}
+        {{ form.name(class='form-control is-invalid my-form mt-4', placeholder="Tracker Name")}}
+        <div class="invalid-feedback">
+          {% for error in form.name.errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+
+      {% else %}
+        {{ form.name(class='form-control my-form mt-4', placeholder="name")}}
+      {% endif %}
+
+      {% if form.description.errors %}
+        {{ form.description(class='form-control is-invalid my-form', placeholder="Description")}}
+        <div class="invalid-feedback">
+          {% for error in form.description.errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+
+      {% else %}
+        {{ form.description(class='form-control my-form', placeholder="description")}}
+      {% endif %}
+
+      {{ form.tracker_type(class='form-control my-form', placeholder="Tracker Type")}}
+
+      {% if form.settings.errors %}
+        {{ form.settings(class='form-control is-invalid my-form', placeholder="Description")}}
+        <div class="invalid-feedback">
+          {% for error in form.settings.errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+
+      {% else %}
+        {{ form.settings(class='form-control my-form', placeholder="Settings")}}
+      {% endif %}
+   <div>
+     <p class="text-lg-left my-color"> *Enter comma-seperated values for settings if <em>Multiple Choice is chosen. </em></p>
+   </div>
+			<br><br>
+      {{form.submit(class='btn btn-lg btn-block btn-primary my-button')}}
+		<br>
+
+        </form>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html"%}
+
+{% set active_page = "home" %}
+
+{% block content %}
+
+<div class="row mx-auto container">
+	<div class="col">
+		<h1 class="container mt-5">Hello, {{ current_user.username }}</h1>
+	</div>
+	<div class="col ">
+		<a href="{{url_for('add_tracker')}}" class=" my-button-success btn btn-lg my-5 float-right sec-button">Add Tracker</a>
+	</div>
+</div>
+{% for tracker in trackers %}
+{% set latest_log = tracker.logs[-1].timestamp if tracker.logs else "never tracked" %}
+<a href="{{ url_for('tracker', tracker_id=tracker.id) }}" style="color:white;">
+<div class="container card p-5 mt-5">
+	<div class="row">
+		<h4>{{tracker.name}}</h4>
+	</div>
+	<div class="row">
+		<p>{{tracker.description[0:40]}}...</p>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col">
+			<a type="button" class="btn btn-primary my-button" 
+			style="padding: 12px 60px;" href="{{ url_for('add_log', tracker_id=tracker.id) }}">
+	  		Add log
+	  	</a>
+		</div>
+		<div class="col ">
+			<a type="button" class="btn btn-primary float-right sec2-button" style="padding: 12px 60px;" href="{{ url_for('tracker', tracker_id=tracker.id) }}">
+	  		More Details
+	  	</a>
+		</div>
+		
+	</div>
+	<div class="row justify-content-center font-italic font-weight-light">
+		<p class="m-0">•  Last Tracked - {{ latest_log if latest_log == "never tracked" else latest_log|get_latest_time + " ago" }}  •</p>
+	</div>
+<!--   	<div class="col-lg-12">	
+	  	<a type="button" class="btn btn-primary my-button" style="padding: 12px 60px;">
+	  		Add log
+	  	</a>
+		<div class="btn-group btn-group-sm pull-right float-right ">
+	          <a href="#" class=" my-button-success btn btn-lg ">Edit</a>
+	          <a href="#" class="my-button-danger btn  ml-2 ">Delete</a>
+	    </div>
+  	</div> -->
+</div>
+</a>
+{% endfor %}
+
+<br>
+
+{% endblock %}

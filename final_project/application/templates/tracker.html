@@ -1,0 +1,70 @@
+{% extends "base.html"%}
+
+{% block content %}
+<div class="container">
+
+  <div class="row mx-auto">
+    <div class="col">
+      <h1 class="mt-5">Tracker - {{ tracker.name }}</h1>
+      <p class="my-color">{{ tracker.description }}</p>
+    </div>
+    <div class="col ">
+      <a type="button" href="{{ url_for('add_log', tracker_id=tracker.id) }}" class="btn btn-lg my-5 float-right my-button">Add Log</a>
+    </div>
+  </div>
+  <div class="row ml-4">
+    <a href="{{url_for('update_tracker', tracker_id = tracker.id) }}" class="btn btn-lg my-5 float-right my-button-success">Update</a>
+    <a href="{{url_for('delete_tracker', tracker_id = tracker.id) }}" class="btn btn-lg my-5 float-right my-button-danger ml-4">Delete</a>
+  </div>
+</div>
+<div class="container">
+    <div class="btn-group float-right m-4 my-color">
+      <img height=300 src="{{ url_for('static', filename='images/plot.png')}}" class="rounded  d-block" alt="plot">
+
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Period
+  </button>
+  <div class="dropdown-menu dropdown-menu-right">
+    <a class="dropdown-item" href="{{url_for('tracker', tracker_id=tracker.id) + '?' + 'graph=today' }}">Today</a>
+    <a class="dropdown-item" href="{{url_for('tracker', tracker_id=tracker.id) + '?' + 'graph=week' }}">This week</a>
+    <a class="dropdown-item" href="{{url_for('tracker', tracker_id=tracker.id) + '?' + 'graph=month' }}">This month</a>
+    <a class="dropdown-item" href="{{url_for('tracker', tracker_id=tracker.id) + '?' + 'graph=alltime' }}">All time</a>
+  </div>
+</div>
+</div>
+
+<div class="container" >
+  <table class="table table-dark" style="border-radius: 12px; 
+      box-shadow: 8px 8px 16px #000000;">
+  <thead>
+    <tr>
+      <th scope="col">Timestamp</th>
+      <th scope="col">Value</th>
+      <th scope="col">Note</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for log in logs %}
+    <tr>
+      <td>{{log.timestamp.strftime("%d-%m-%Y %H:%M")}}</td>
+      <td>{{log.value}}</td>
+      <td>{{log.note}}</td>
+      <td>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Actions
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="{{ url_for('update_log', log_id=log.id, tracker_id=tracker.id) }}">Edit</a>
+            <a class="dropdown-item" href="{{ url_for('delete_log', log_id=log.id, tracker_id=tracker.id) }}">Delete</a>
+          </div>
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+</div>
+{% endblock %}
